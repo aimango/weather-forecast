@@ -4,6 +4,8 @@
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.instagram/ig-json-parser-processor/0.0.5/ce0c7eaea00ecd9903b72bf7e5012f7a9c9d94c/ig-json-parser-processor-0.0.5.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.instagram/ig-json-parser-processor/0.0.5/77fa63b2f700ae3e0c6fa93264bf63c0941f8120/ig-json-parser-processor-0.0.5-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

@@ -1,5 +1,7 @@
 package com.weatherforecast.app;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +14,7 @@ import java.net.URL;
  */
 public class WeatherHttpClient {
 
+    private static String TAG = "WeatherHttpClient";
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
 
     public String getWeatherData(String loc) {
@@ -23,6 +26,7 @@ public class WeatherHttpClient {
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.connect();
+            Log.d(TAG, "Connection establ");
 
             // read the response
             StringBuffer buffer = new StringBuffer();
@@ -36,6 +40,7 @@ public class WeatherHttpClient {
             connection.disconnect();
             return buffer.toString();
         } catch (IOException e) {
+            Log.e(TAG, e.getMessage());
             e.printStackTrace();
         } finally {
             try {

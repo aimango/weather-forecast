@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/aimango/WeatherForecast/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-fe930dc68beb1e566675ce71b270d4091c6c249b.jar" />
+    </item>
+    <item
+        jar="/Users/aimango/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/1.7.2/112366d8158749e25532ebce162232c6e0fb20a5/gson-1.7.2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="112366d8158749e25532ebce162232c6e0fb20a5">
+        <dex dex="/Users/aimango/WeatherForecast/app/build/intermediates/pre-dexed/debug/gson-1.7.2-f2b96d3cda8f336ed401c0b3858b5001eea91252.jar" />
+    </item>
+    <item
+        jar="/Users/aimango/WeatherForecast/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="/Users/aimango/WeatherForecast/app/build/intermediates/pre-dexed/debug/classes-3996f870eba078c6f661a6589b820ee4a968b399.jar" />
+    </item>
+
+</items>
