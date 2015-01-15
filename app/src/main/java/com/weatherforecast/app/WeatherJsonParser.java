@@ -1,4 +1,4 @@
-package hello;
+package com.weatherforecast.app;
 
 import org.json.JSONArray;
 import org.json.JSONException;
