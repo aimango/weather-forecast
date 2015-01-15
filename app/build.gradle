@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.+'
+    }
+}
+apply plugin: 'android'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+ext {
+    generatedSourcesDir = file("gen-src/main/java")
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+    }
+    gensrc {
+        java {
+            srcDir 'gen-src/main/java'
+        }
+    }
+}
+
+compileJava {
+    doFirst {
+        // Directory should exists before compilation started.
+        generatedSourcesDir.mkdirs()
+    }
+    options.compilerArgs += [
+            '-processor',
+            'com.instagram.common.json.annotation.processor.JsonAnnotationProcessor',
+            '-s',
+            generatedSourcesDir
+    ]
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:19.+'
+    compile group: 'com.instagram', name: 'ig-json-parser-processor', version: '0.0.5+'
+}
