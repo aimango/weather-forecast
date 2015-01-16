@@ -6,11 +6,8 @@ package com.weatherforecast.app;
 class Location {
 
     String country;
-
     String city;
-
     float lat;
-
     float lon;
 
     public void setCountry(String country) {

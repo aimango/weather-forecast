@@ -7,12 +7,10 @@ package com.weatherforecast.app;
 public class Forecast {
 
     float date;
-
     float humidity;
-
-    Conditions conditions;
-
     float minTemp;
+    float maxTemp;
+    Conditions conditions;
 
     public void setDate(float date) {
         this.date = date;
@@ -34,17 +32,13 @@ public class Forecast {
         this.maxTemp = maxTemp;
     }
 
-    float maxTemp;
-
     public static class Conditions {
+        String main;
+        String description;
 
         public void setMain(String main) {
             this.main = main;
         }
-
-        String main;
-
-        String description;
 
         public void setDescription(String description) {
             this.description = description;

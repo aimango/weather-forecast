@@ -6,7 +6,11 @@ import java.util.List;
  * Created by aimango on 15-01-14.
  */
 
-class WeatherJsonResponse {
+class FiveDayForecast {
+
+    int dayCnt;
+    Location location;
+    List<Forecast> days;
 
     public void setLocation(Location location) {
         this.location = location;
@@ -20,9 +24,4 @@ class WeatherJsonResponse {
         this.days = days;
     }
 
-    Location location;
-
-    int dayCnt;
-
-    List<Forecast> days;
 }

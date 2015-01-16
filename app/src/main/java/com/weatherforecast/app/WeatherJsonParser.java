@@ -12,58 +12,52 @@ import java.util.List;
  */
 public class WeatherJsonParser {
 
-    public static WeatherJsonResponse getWeather(String data) throws JSONException {
-        WeatherJsonResponse response = new WeatherJsonResponse();
+    public static FiveDayForecast getWeather(String data) throws JSONException {
+        FiveDayForecast response = new FiveDayForecast();
 
-        // We create out JSONObject from the data
         JSONObject jObj = new JSONObject(data);
+        JSONObject jCity = getObject("city", jObj);
 
         Location loc = new Location();
+        loc.setCity(getString("name", jCity));
+        loc.setCountry(getString("country", jCity));
 
-        JSONArray jArr = jObj.getJSONArray("city");
-
-        JSONObject JSONCity = jArr.getJSONObject(0);
-        loc.setCity(getString("name", JSONCity));
-        loc.setCountry(getString("country", JSONCity));
-
-        JSONArray jArrCoord = JSONCity.getJSONArray("coord");
-        JSONObject JSONCoord = jArrCoord.getJSONObject(0); // ?
-
-        loc.setLatitude(getFloat("lat", JSONCoord));
-        loc.setLongitude(getFloat("lon", JSONCoord));
+        JSONObject jCoord = getObject("coord", jCity);
+        loc.setLatitude(getFloat("lat", jCoord));
+        loc.setLongitude(getFloat("lon", jCoord));
         response.setLocation(loc);
 
         int count = getInt("cnt", jObj);
         response.setDayCnt(count);
 
-        JSONArray jArrList = jObj.getJSONArray("list");
+        JSONArray jForecastList = jObj.getJSONArray("list");
         List<Forecast> days = new ArrayList<Forecast>();
         for (int i = 0; i < count; i++) {
-            Forecast f = new Forecast();
-            JSONObject day = jArrList.getJSONObject(i);
-            f.setDate(getFloat("dt", day));
-            f.setHumidity(getFloat("humidity", day));
+            Forecast forecast = new Forecast();
+            JSONObject day = jForecastList.getJSONObject(i);
+            forecast.setDate(getFloat("dt", day));
+            forecast.setHumidity(getFloat("humidity", day));
 
             // Retrieve max/min temperatures
             JSONObject tempObj = getObject("temp", day);
-            f.setMinTemp(getFloat("min", tempObj));
-            f.setMaxTemp(getFloat("max", tempObj));
+            forecast.setMinTemp(getFloat("min", tempObj));
+            forecast.setMaxTemp(getFloat("max", tempObj));
 
             // Retrieve forecast conditions
-            Forecast.Conditions c = new Forecast.Conditions();
+            Forecast.Conditions conditions = new Forecast.Conditions();
             JSONArray weather = day.getJSONArray("weather");
             JSONObject conditionsObj = weather.getJSONObject(0);
-            c.setDescription(getString("description", conditionsObj));
-            c.setMain(getString("main", conditionsObj));
-            f.setConditions(c);
-            days.add(f);
+            conditions.setDescription(getString("description", conditionsObj));
+            conditions.setMain(getString("main", conditionsObj));
+            forecast.setConditions(conditions);
+            days.add(forecast);
         }
+        response.setDays(days);
 
         return response;
     }
 
-
-    private static JSONObject getObject(String tagName, JSONObject jObj)  throws JSONException {
+    private static JSONObject getObject(String tagName, JSONObject jObj) throws JSONException {
         JSONObject subObj = jObj.getJSONObject(tagName);
         return subObj;
     }
@@ -72,11 +66,11 @@ public class WeatherJsonParser {
         return jObj.getString(tagName);
     }
 
-    private static float  getFloat(String tagName, JSONObject jObj) throws JSONException {
+    private static float getFloat(String tagName, JSONObject jObj) throws JSONException {
         return (float) jObj.getDouble(tagName);
     }
 
-    private static int  getInt(String tagName, JSONObject jObj) throws JSONException {
+    private static int getInt(String tagName, JSONObject jObj) throws JSONException {
         return jObj.getInt(tagName);
     }
 
