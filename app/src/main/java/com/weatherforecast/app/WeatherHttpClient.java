@@ -9,13 +9,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by aimango on 15-01-14.
- */
 public class WeatherHttpClient {
 
     private static String TAG = "WeatherHttpClient";
-    private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
+    private static String BASE_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?cnt=5&units=metric&mode=json&q=";
 
     public String getWeatherData(String loc) {
         InputStream is = null;
@@ -26,7 +23,7 @@ public class WeatherHttpClient {
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.connect();
-            Log.d(TAG, "Connection establ");
+            Log.d(TAG, "Connection established.");
 
             // read the response
             StringBuffer buffer = new StringBuffer();

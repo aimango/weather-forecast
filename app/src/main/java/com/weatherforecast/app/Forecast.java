@@ -1,18 +1,14 @@
 package com.weatherforecast.app;
 
-
-/**
- * Created by aimango on 15-01-14.
- */
 public class Forecast {
 
-    float date;
+    long date;
     float humidity;
     float minTemp;
     float maxTemp;
     Conditions conditions;
 
-    public void setDate(float date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

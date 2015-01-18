@@ -1,8 +1,5 @@
 package com.weatherforecast.app;
 
-/**
- * Created by aimango on 15-01-14.
- */
 class Location {
 
     String country;

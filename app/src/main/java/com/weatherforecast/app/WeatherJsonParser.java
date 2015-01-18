@@ -7,9 +7,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by aimango on 15-01-15.
- */
 public class WeatherJsonParser {
 
     public static FiveDayForecast getWeather(String data) throws JSONException {
@@ -35,7 +32,7 @@ public class WeatherJsonParser {
         for (int i = 0; i < count; i++) {
             Forecast forecast = new Forecast();
             JSONObject day = jForecastList.getJSONObject(i);
-            forecast.setDate(getFloat("dt", day));
+            forecast.setDate(getLong("dt", day));
             forecast.setHumidity(getFloat("humidity", day));
 
             // Retrieve max/min temperatures
@@ -68,6 +65,10 @@ public class WeatherJsonParser {
 
     private static float getFloat(String tagName, JSONObject jObj) throws JSONException {
         return (float) jObj.getDouble(tagName);
+    }
+
+    private static long getLong(String tagName, JSONObject jObj) throws JSONException {
+        return jObj.getLong(tagName);
     }
 
     private static int getInt(String tagName, JSONObject jObj) throws JSONException {

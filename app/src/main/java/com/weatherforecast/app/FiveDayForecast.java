@@ -2,10 +2,6 @@ package com.weatherforecast.app;
 
 import java.util.List;
 
-/**
- * Created by aimango on 15-01-14.
- */
-
 class FiveDayForecast {
 
     int dayCnt;

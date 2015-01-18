@@ -1,72 +1,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="${packageName}.${activityClass}"
-    android:padding="10dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"/>
+  <TextView
+      android:id="@+id/city"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingLeft="@dimen/row_spacing"
+      android:paddingBottom="@dimen/row_spacing"
+      android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/country"
-        android:layout_toRightOf="@id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"/>
+  <View
+      android:id="@+id/top_divider"
+      android:layout_width="fill_parent"
+      android:layout_height="1dp"
+      android:background="@android:color/darker_gray"
+      android:layout_below="@id/city"
+      />
 
-    <TextView
-        android:id="@+id/lat"
-        android:layout_toRightOf="@id/country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"/>
+  <ListView
+    android:id="@+id/listview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/top_divider"
+    android:divider="@drawable/divider"
+    android:dividerHeight="1dp"/>
 
-    <TextView
-        android:id="@+id/lon"
-        android:layout_toRightOf="@id/lat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/temp_min"
-        android:layout_below="@id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"/>
-
-    <TextView
-        android:id="@+id/temp_max"
-        android:layout_below="@id/city"
-        android:layout_toRightOf="@id/temp_min"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"/>
-
-    <TextView
-        android:id="@+id/humidity"
-        android:layout_below="@id/city"
-        android:layout_toRightOf="@id/temp_max"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"/>
-
-    <TextView
-        android:id="@+id/conditions_main"
-        android:layout_below="@id/temp_min"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"/>
-
-    <TextView
-        android:id="@+id/conditions_desc"
-        android:layout_below="@id/temp_min"
-        android:layout_toRightOf="@id/conditions_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="10dp"/>
+  <View
+      android:layout_width="fill_parent"
+      android:layout_height="1dp"
+      android:background="@android:color/darker_gray"
+      android:layout_below="@id/listview"
+      />
 
 </RelativeLayout>

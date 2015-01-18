@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/max_row_height"
+                tools:context="${packageName}.${activityClass}"
+                android:padding="10dp">
+
+  <TextView
+      android:id="@+id/date"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+  <TextView
+      android:id="@+id/temp_min"
+      android:layout_below="@id/date"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+  <TextView
+      android:id="@+id/temp_max"
+      android:layout_below="@id/date"
+      android:layout_toRightOf="@id/temp_min"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+  <TextView
+      android:id="@+id/humidity"
+      android:layout_below="@id/temp_min"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+  <TextView
+      android:id="@+id/conditions_desc"
+      android:layout_below="@id/humidity"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+</RelativeLayout>
