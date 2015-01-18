@@ -14,6 +14,7 @@ import java.util.TimeZone;
 
 public class ForecastArrayAdapter extends ArrayAdapter<Forecast> {
 
+    private static String DATE_FORMAT = "MMM dd, yyyy";
     private final Context context;
     private List<Forecast> forecasts;
 
@@ -31,19 +32,19 @@ public class ForecastArrayAdapter extends ArrayAdapter<Forecast> {
 
         Forecast f = forecasts.get(position);
         ((TextView) rowView.findViewById(R.id.date)).setText(getDate(f.date));
-        ((TextView) rowView.findViewById(R.id.temp_min)).setText(
-                "Min/Max: " + Math.round(f.minTemp) + "\u00b0C, ");
-        ((TextView) rowView.findViewById(R.id.temp_max)).setText(Math.round(f.maxTemp) + "\u00b0C");
-        ((TextView) rowView.findViewById(R.id.humidity)).setText(f.humidity + "% humidity" );
+        ((TextView) rowView.findViewById(R.id.temperature)).setText(context.getString(
+                R.string.temperature_high_low, Math.round(f.minTemp), Math.round(f.maxTemp)));
+        ((TextView) rowView.findViewById(R.id.humidity)).setText(
+                context.getString(R.string.humidity, f.humidity));
         ((TextView) rowView.findViewById(R.id.conditions_desc)).setText(
-                "Conditions: " + f.conditions.description);
+                context.getString(R.string.conditions, f.conditions.description));
 
         return rowView;
     }
 
     private String getDate(long unixSeconds) {
-        Date date = new Date(unixSeconds * 1000L); // * 1000 is to convert seconds to milliseconds
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
+        Date date = new Date(unixSeconds * 1000L); // * 1000 to convert seconds to milliseconds
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-4"));
         return sdf.format(date);
     }

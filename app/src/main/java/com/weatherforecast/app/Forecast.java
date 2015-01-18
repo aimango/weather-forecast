@@ -1,9 +1,9 @@
 package com.weatherforecast.app;
 
-public class Forecast {
+class Forecast {
 
     long date;
-    float humidity;
+    int humidity;
     float minTemp;
     float maxTemp;
     Conditions conditions;
@@ -12,7 +12,7 @@ public class Forecast {
         this.date = date;
     }
 
-    public void setHumidity(float humidity) {
+    public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
 

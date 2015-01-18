@@ -33,7 +33,7 @@ public class WeatherJsonParser {
             Forecast forecast = new Forecast();
             JSONObject day = jForecastList.getJSONObject(i);
             forecast.setDate(getLong("dt", day));
-            forecast.setHumidity(getFloat("humidity", day));
+            forecast.setHumidity(getInt("humidity", day));
 
             // Retrieve max/min temperatures
             JSONObject tempObj = getObject("temp", day);

@@ -12,18 +12,20 @@ import java.net.URL;
 public class WeatherHttpClient {
 
     private static String TAG = "WeatherHttpClient";
-    private static String BASE_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?cnt=5&units=metric&mode=json&q=";
+    private static String BASE_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?" +
+            "cnt=%d&units=metric&mode=json&q=%s";
 
-    public String getWeatherData(String loc) {
+    public String getWeatherData(String location, int days) {
         InputStream is = null;
         HttpURLConnection connection = null;
         try {
-            connection = (HttpURLConnection) ( new URL(BASE_URL + loc)).openConnection();
+            String formatted = String.format(BASE_URL, days, location);
+            connection = (HttpURLConnection) new URL(formatted).openConnection();
             connection.setRequestMethod("GET");
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.connect();
-            Log.d(TAG, "Connection established.");
+            Log.v(TAG, "Connection established.");
 
             // read the response
             StringBuffer buffer = new StringBuffer();
@@ -37,7 +39,7 @@ public class WeatherHttpClient {
             connection.disconnect();
             return buffer.toString();
         } catch (IOException e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "IOException message: " + e.getMessage());
             e.printStackTrace();
         } finally {
             try {

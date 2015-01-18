@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Weather Forecast</string>
+    <string name="forecast_title">Forecast for %1$s, %2$s</string>
+    <string name="no_connection">No connection</string>
 
-    <string name="app_name">WeatherForecast</string>
-    <string name="hello_world">Hello world!</string>
-
+    <string name="temperature_high_low">Low of %1$d \u00b0C, high of %2$d \u00b0C</string>
+    <string name="humidity">%d%% humidity</string>
+    <string name="conditions">Conditions: %s</string>
 </resources>
